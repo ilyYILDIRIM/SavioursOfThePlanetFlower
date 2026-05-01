@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/LadyBug.png</SourceFile>
-  <SourceTime>2026-04-28T13:54:46.311635+03:00</SourceTime>
-  <DestFile>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/bin/DesktopGL/Content/Textures/LadyBug.xnb</DestFile>
-  <DestTime>2026-04-28T13:59:07.9130029+03:00</DestTime>
+  <SourceFile>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/Enemy1.png</SourceFile>
+  <SourceTime>2026-04-28T13:54:54.5156619+03:00</SourceTime>
+  <DestFile>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/bin/DesktopGL/Content/Textures/Enemy1.xnb</DestFile>
+  <DestTime>2026-04-28T13:59:07.7779525+03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2025-10-20T17:25:32+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

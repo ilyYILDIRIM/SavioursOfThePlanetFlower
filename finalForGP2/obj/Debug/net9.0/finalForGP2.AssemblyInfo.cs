@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("finalForGP2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35562847f1ed37bf3077e6b690f533d0ae538b7c")]
 [assembly: System.Reflection.AssemblyProductAttribute("finalForGP2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("finalForGP2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

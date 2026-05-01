@@ -17,16 +17,20 @@ public class Game1 : Game
     Texture2D enemyTexture;
 
     private List<Enemy> enemies = new List<Enemy>();
+    
 
     private float enemyMoveSpeed = 60f;
     private float enemyStepDownAmount = 20f;
     private int enemyDirection = 1; // 1 = right, -1 = left
+    float shootTimer = 0f;
 
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
+
+        
     }
 
     protected override void Initialize()
@@ -40,11 +44,12 @@ public class Game1 : Game
 
         ladyBugTexture = Content.Load<Texture2D>("Textures/ladybug");
         bulletTexture = Content.Load<Texture2D>("Textures/bullet");
-        enemyTexture = Content.Load<Texture2D>("Textures/ladybug"); // şimdilik aynı sprite'ı kullanıyoruz
+        enemyTexture = Content.Load<Texture2D>("Textures/Enemy1"); 
+        Texture2D enemyBulletTexture = Content.Load<Texture2D>("Textures/bullet");
 
         player = new Player(ladyBugTexture, bulletTexture, new Vector2(300, 400));
 
-        CreateEnemyWave(15,5);
+        CreateEnemyWave(30,10);
     }
 
     private void CreateEnemyWave(int enemyCount, int maxColumns) //We can do waves however we want.
@@ -54,8 +59,8 @@ public class Game1 : Game
     float startX = 100f;
     float startY = 60f;
 
-    float spacingX = 90f;
-    float spacingY = 70f;
+    float spacingX = 50f;
+    float spacingY = 50f;
 
     for (int i = 0; i < enemyCount; i++)
     {
@@ -73,6 +78,9 @@ public class Game1 : Game
 
     protected override void Update(GameTime gameTime)
     {
+        
+       
+        float shootTimer = 0f;
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
             Keyboard.GetState().IsKeyDown(Keys.Escape))
         {
@@ -85,7 +93,26 @@ public class Game1 : Game
         CheckBulletEnemyCollisions();
 
         base.Update(gameTime);
+
+        float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+        shootTimer -= deltaTime;
+
+        if (shootTimer <= 0f && enemies.Count > 0)
+        {
+            shootTimer = 1.5f;
+
+            Enemy randomEnemy = enemies[0]; // şimdilik ilk enemy
+
+            Vector2 pos = new Vector2(
+            randomEnemy.GetBounds().Center.X,
+            randomEnemy.GetBounds().Bottom
+        );
+
+       
+        }
     }
+    
+    
 
     private void UpdateEnemies(GameTime gameTime)
     {
@@ -163,6 +190,13 @@ public class Game1 : Game
         }
     }
 
+    private void CheckPlayerHit()
+{
+    Rectangle playerBounds = player.GetBounds();
+
+
+}
+
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -175,6 +209,7 @@ public class Game1 : Game
         {
             enemy.Draw(_spriteBatch);
         }
+
 
         _spriteBatch.End();
 

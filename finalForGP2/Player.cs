@@ -5,12 +5,13 @@ using System.Collections.Generic;
 
 public class Player
 {
+    private int health = 3;
     private float scale = 0.04f;
     private Texture2D texture;
     private Vector2 position;
     private float speed = 300f;
 
-    private float shootCooldown = 0.25f;
+    private float shootCooldown = 1f;
     private float shootTimer = 0f;
 
     private Texture2D projectileTexture;
@@ -81,7 +82,7 @@ public class Player
     }
 
     private void Shoot()
-{
+    {
     float scaledWidth = texture.Width * scale;
 
     Vector2 spawnPosition = new Vector2(
@@ -90,10 +91,10 @@ public class Player
     );
 
     projectiles.Add(new Projectile(projectileTexture, spawnPosition));
-}
+    }
 
    public void Draw(SpriteBatch spriteBatch)
-{
+    {
     spriteBatch.Draw(
         texture,
         position,
@@ -110,10 +111,30 @@ public class Player
     {
         projectile.Draw(spriteBatch);
     }
-}
+    }
 
     public List<Projectile> GetProjectiles()
     {
         return projectiles;
+    }
+
+    public void TakeDamage()
+    {
+    health--;
+
+    if (health <= 0)
+    {
+        System.Diagnostics.Debug.WriteLine("Öldünüz fakat taretleriniz savaşmaya devam ediyor.");
+    }
+    }
+
+    public Rectangle GetBounds()
+    {
+    return new Rectangle(
+        (int)position.X,
+        (int)position.Y,
+        (int)(texture.Width * scale),
+        (int)(texture.Height * scale)
+    );
     }
 }

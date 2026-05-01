@@ -33,3 +33,6 @@
 /Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/obj/Debug/net9.0/ref/finalForGP2.dll
 /Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/bullet.xnb
 /Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/LadyBug.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/obj/Debug/net9.0/finalForGP2.sourcelink.json
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/Enemy1.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/Enemy1_2.xnb
