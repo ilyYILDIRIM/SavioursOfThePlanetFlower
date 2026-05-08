@@ -4,12 +4,14 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/bullet.png</File>
     <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/Enemy1_2.png</File>
     <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/Enemy1.png</File>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/kalpPNG.png</File>
     <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/LadyBug.png</File>
-    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/bullet.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

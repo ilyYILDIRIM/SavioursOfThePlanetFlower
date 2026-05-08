@@ -79,6 +79,8 @@ public class Player
                 projectiles.RemoveAt(i);
             }
         }
+
+        
     }
 
     private void Shoot()
@@ -118,9 +120,11 @@ public class Player
         return projectiles;
     }
 
-    public void TakeDamage()
+    public void TakeDamage()    
     {
     health--;
+
+    System.Diagnostics.Debug.WriteLine("Current Health: " + health);
 
     if (health <= 0)
     {
@@ -136,5 +140,10 @@ public class Player
         (int)(texture.Width * scale),
         (int)(texture.Height * scale)
     );
+    }
+
+    public int GetHealth()
+    {
+    return health;
     }
 }

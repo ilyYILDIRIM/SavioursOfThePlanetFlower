@@ -15,8 +15,16 @@ public class Game1 : Game
     Texture2D ladyBugTexture;
     Texture2D bulletTexture;
     Texture2D enemyTexture;
+    Texture2D heartTexture;
+
+    Texture2D shootingEnemyTexture;
+
+    Texture2D turretTexture;
+private List<Turret> turrets = new List<Turret>();
 
     private List<Enemy> enemies = new List<Enemy>();
+    private List<ShootingEnemy> shootingEnemies = new List<ShootingEnemy>();
+
     
 
     private float enemyMoveSpeed = 60f;
@@ -45,24 +53,51 @@ public class Game1 : Game
         ladyBugTexture = Content.Load<Texture2D>("Textures/ladybug");
         bulletTexture = Content.Load<Texture2D>("Textures/bullet");
         enemyTexture = Content.Load<Texture2D>("Textures/Enemy1"); 
-        Texture2D enemyBulletTexture = Content.Load<Texture2D>("Textures/bullet");
+        shootingEnemyTexture = Content.Load<Texture2D>("Textures/Enemy1");
+        heartTexture = Content.Load<Texture2D>("Textures/kalpPNG");
+        turretTexture = Content.Load<Texture2D>("Textures/ladybug");
 
         player = new Player(ladyBugTexture, bulletTexture, new Vector2(300, 400));
 
-        CreateEnemyWave(30,10);
+        float turretY = 320f; // player'ın biraz üstü
+
+        float startX = 75f;
+        float spacing = 300f;
+
+        for (int i = 0; i < 3; i++)
+        {
+        Vector2 turretPosition = new Vector2(
+        startX + (i * spacing),
+        turretY
+        );
+
+        turrets.Add(
+        new Turret(
+            turretTexture,
+            bulletTexture,
+            turretPosition
+        )
+        );
+}
+
+        CreateEnemyWave(5,2,10);
     }
 
-    private void CreateEnemyWave(int enemyCount, int maxColumns) //We can do waves however we want.
+    private void CreateEnemyWave(int normalEnemyCount, int shootingEnemyCount, int maxColumns)
 {
     enemies.Clear();
+    shootingEnemies.Clear();
 
     float startX = 100f;
     float startY = 60f;
 
-    float spacingX = 50f;
-    float spacingY = 50f;
+    float spacingX = 90f;
+    float spacingY = 70f;
 
-    for (int i = 0; i < enemyCount; i++)
+    int totalEnemies = normalEnemyCount + shootingEnemyCount;
+    int shootingEnemiesPlaced = 0;
+
+    for (int i = 0; i < totalEnemies; i++)
     {
         int row = i / maxColumns;
         int col = i % maxColumns;
@@ -72,7 +107,28 @@ public class Game1 : Game
             startY + row * spacingY
         );
 
-        enemies.Add(new Enemy(enemyTexture, position));
+        // Her 3 enemy'den biri shooting enemy olsun
+        if (shootingEnemiesPlaced < shootingEnemyCount && i % 3 == 0)
+        {
+            shootingEnemies.Add(
+                new ShootingEnemy(
+                    shootingEnemyTexture,
+                    bulletTexture,
+                    position
+                )
+            );
+
+            shootingEnemiesPlaced++;
+        }
+        else
+        {
+            enemies.Add(
+                new Enemy(
+                    enemyTexture,
+                    position
+                )
+            );
+        }
     }
 }
 
@@ -88,6 +144,22 @@ public class Game1 : Game
         }
 
         player.Update(gameTime);
+
+        foreach (Turret turret in turrets)
+        {
+        turret.Update(gameTime);
+        }
+
+        foreach (ShootingEnemy shootingEnemy in shootingEnemies)
+    {
+    if (shootingEnemy.IsActive)
+    {
+        shootingEnemy.Update(gameTime);
+    }
+    }
+
+    CheckShootingEnemyBulletPlayerCollision();
+    
 
         UpdateEnemies(gameTime);
         CheckBulletEnemyCollisions();
@@ -136,6 +208,21 @@ public class Game1 : Game
             }
         }
 
+        foreach (ShootingEnemy enemy in shootingEnemies)
+        {
+        if (!enemy.IsActive)
+        continue;
+
+        Rectangle bounds = enemy.GetBounds();
+        float nextX = bounds.X + moveAmount;
+
+        if (nextX <= 0 || nextX + bounds.Width >= _graphics.PreferredBackBufferWidth)
+        {
+        shouldStepDown = true;
+        break;
+        }
+        }
+
         if (shouldStepDown)
         {
             enemyDirection *= -1;
@@ -147,6 +234,13 @@ public class Game1 : Game
                     enemy.Move(new Vector2(0f, enemyStepDownAmount));
                 }
             }
+            foreach (ShootingEnemy enemy in shootingEnemies)
+            {
+            if (enemy.IsActive)
+            {
+                enemy.Move(new Vector2(0f, enemyStepDownAmount));
+            }
+            }
         }
         else
         {
@@ -156,6 +250,14 @@ public class Game1 : Game
                 {
                     enemy.Move(new Vector2(moveAmount, 0f));
                 }
+            }
+
+            foreach (ShootingEnemy enemy in shootingEnemies)
+            {
+            if (enemy.IsActive)            
+            {
+                enemy.Move(new Vector2(moveAmount, 0f));
+            }
             }
         }
     }
@@ -188,13 +290,80 @@ public class Game1 : Game
                 }
             }
         }
+
+        for (int i = projectiles.Count - 1; i >= 0; i--)
+        {
+            Projectile projectile = projectiles[i];
+
+            if (!projectile.IsActive)
+                continue;
+
+            Rectangle projectileBounds = projectile.GetBounds();
+
+            for (int j = 0; j < shootingEnemies.Count; j++)
+            {
+                ShootingEnemy enemy = shootingEnemies[j];
+
+                if (!enemy.IsActive)
+                    continue;
+
+                if (projectileBounds.Intersects(enemy.GetBounds()))
+                {
+                    enemy.Destroy();
+                    projectiles.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+        
+    }
+    
+
+    private void CheckShootingEnemyBulletPlayerCollision()
+    {
+    Rectangle playerBounds = player.GetBounds();
+
+    foreach (ShootingEnemy shootingEnemy in shootingEnemies)
+    {
+        List<EnemyProjectile> projectiles = shootingEnemy.GetProjectiles();
+
+        for (int i = projectiles.Count - 1; i >= 0; i--)
+        {
+            if (projectiles[i].GetBounds().Intersects(playerBounds))
+            {
+                player.TakeDamage();
+                projectiles.RemoveAt(i);
+            }
+        }
+    }
     }
 
     private void CheckPlayerHit()
-{
+    {
     Rectangle playerBounds = player.GetBounds();
+    }
 
+    private void DrawPlayerHealthUI()
+{
+    int playerHealth = player.GetHealth();
 
+    int heartSize = 40;
+    int spacing = 10;
+
+    int startX = _graphics.PreferredBackBufferWidth - 150;
+    int startY = 20;
+
+    for (int i = 0; i < playerHealth; i++)
+    {
+        Rectangle destination = new Rectangle(
+            startX + (i * (heartSize + spacing)),
+            startY,
+            heartSize,
+            heartSize
+        );
+
+        _spriteBatch.Draw(heartTexture, destination, Color.White);
+    }
 }
 
     protected override void Draw(GameTime gameTime)
@@ -204,10 +373,20 @@ public class Game1 : Game
         _spriteBatch.Begin();
 
         player.Draw(_spriteBatch);
+        DrawPlayerHealthUI();
 
         foreach (Enemy enemy in enemies)
         {
             enemy.Draw(_spriteBatch);
+        }
+        foreach (Turret turret in turrets)
+        {
+        turret.Draw(_spriteBatch);
+        }
+
+        foreach (ShootingEnemy shootingEnemy in shootingEnemies)
+        {
+        shootingEnemy.Draw(_spriteBatch);
         }
 
 
