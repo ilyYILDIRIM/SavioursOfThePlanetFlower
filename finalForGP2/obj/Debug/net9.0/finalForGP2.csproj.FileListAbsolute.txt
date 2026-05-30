@@ -35,6 +35,21 @@
 /Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/LadyBug.xnb
 /Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/obj/Debug/net9.0/finalForGP2.sourcelink.json
 /Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/Enemy1.xnb
-/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/Enemy1_2.xnb
 /Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/kalpPNG.xnb
 /Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Fonts/DefaultFont.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Sounds/backgroundgame.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Sounds/backgroundmenu.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Sounds/bossdeath (1).xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Sounds/bossshot.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Sounds/enemydeath.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Sounds/enemyshoot.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Sounds/planetgothit.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Sounds/playershoot.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Sounds/turretgothit.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/background.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/bossbullet.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/enemybullet.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/playerbullet.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/shootingEnemy.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/turret.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/turretbullet.xnb

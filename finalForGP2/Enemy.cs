@@ -32,6 +32,7 @@ public class Enemy : IGameObject
         IsActive = false;
         GameEvents.EnemyKilled(ScoreManager.CurrentScore + 10);
         ScoreManager.AddScore(10);
+        SoundManager.PlayEnemyDeath();
 
         if (OnDestroyed != null)
         {

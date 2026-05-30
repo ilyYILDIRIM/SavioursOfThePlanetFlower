@@ -21,7 +21,9 @@ public class WaveConfig
 public class WaveManager
 {
     private Texture2D enemyTexture;
-    private Texture2D bulletTexture;
+    private Texture2D shootingEnemyTexture;
+    private Texture2D enemyBulletTexture;
+    private Texture2D bossBulletTexture;
     private Texture2D pixelTexture;
     private int screenWidth;
     private int screenHeight;
@@ -36,28 +38,30 @@ public class WaveManager
     {
         new WaveConfig(15,  0,  5),
         new WaveConfig(10,  5,  5),
-        new WaveConfig(10,  10,  5),
+        new WaveConfig(15,  10,  5),
         new WaveConfig(20,  10,  6),
-        new WaveConfig(9,  4,  13),
-        new WaveConfig(10, 5,  15),
-        new WaveConfig(10, 6,  16),
-        new WaveConfig(11, 6,  17),
-        new WaveConfig(12, 7,  19),
-        new WaveConfig(13, 7,  20),
-        new WaveConfig(13, 8,  21),
-        new WaveConfig(14, 8,  22),
-        new WaveConfig(14, 9,  23),
-        new WaveConfig(15, 9,  24),
+        new WaveConfig(20,  10,  6),
+        new WaveConfig(20, 10,  6),
+        new WaveConfig(5, 15,  5),
+        new WaveConfig(10, 10,  4),
+        new WaveConfig(10, 10,  5),
+        new WaveConfig(13, 7,  10),
+        new WaveConfig(13, 8,  10),
+        new WaveConfig(10, 10,  4),
+        new WaveConfig(15, 15,  10),
+        new WaveConfig(10, 10,  5),
         new WaveConfig(15, 10, 25),
     };
 
-    public WaveManager(Texture2D enemyTexture, Texture2D bulletTexture, Texture2D pixelTexture, int screenWidth, int screenHeight)
+    public WaveManager(Texture2D enemyTexture, Texture2D shootingEnemyTexture, Texture2D enemyBulletTexture, Texture2D bossBulletTexture, Texture2D pixelTexture, int screenWidth, int screenHeight)
     {
-        this.enemyTexture  = enemyTexture;
-        this.bulletTexture = bulletTexture;
-        this.pixelTexture  = pixelTexture;
-        this.screenWidth   = screenWidth;
-        this.screenHeight  = screenHeight;
+        this.enemyTexture         = enemyTexture;
+        this.shootingEnemyTexture = shootingEnemyTexture;
+        this.enemyBulletTexture   = enemyBulletTexture;
+        this.bossBulletTexture    = bossBulletTexture;
+        this.pixelTexture         = pixelTexture;
+        this.screenWidth          = screenWidth;
+        this.screenHeight         = screenHeight;
     }
 
     public void SpawnNextWave()
@@ -70,7 +74,7 @@ public class WaveManager
         if (CurrentWave % 5 == 0)
         {
             Vector2 bossPos = new Vector2(0, 30f);
-            Boss = new BossEnemy(enemyTexture, bulletTexture, pixelTexture, bossPos, screenWidth, screenHeight);
+            Boss = new BossEnemy(enemyTexture, bossBulletTexture, pixelTexture, bossPos, screenWidth, screenHeight);
             return;
         }
 
@@ -92,7 +96,7 @@ public class WaveManager
 
             if (shootingPlaced < config.ShootingEnemyCount && i % 3 == 0)
             {
-                ShootingEnemies.Add(new ShootingEnemy(enemyTexture, bulletTexture, pos, screenHeight));
+                ShootingEnemies.Add(new ShootingEnemy(shootingEnemyTexture, enemyBulletTexture, pos, screenHeight));
                 shootingPlaced++;
             }
             else

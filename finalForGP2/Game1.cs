@@ -28,6 +28,13 @@ public class Game1 : Game
     private Texture2D enemyTexture;
     private Texture2D heartTexture;
     private Texture2D pixelTexture;
+    private Texture2D backgroundTexture;
+    private Texture2D turretTexture;
+    private Texture2D shootingEnemyTexture;
+    private Texture2D bossBulletTexture;
+    private Texture2D enemyBulletTexture;
+    private Texture2D turretBulletTexture;
+    private Texture2D playerBulletTexture;
 
     private FlowerPlanet flowerPlanet;
     private UpgradeMenu upgradeMenu;
@@ -78,11 +85,18 @@ public class Game1 : Game
         screenWidth  = GraphicsDevice.Viewport.Width;
         screenHeight = GraphicsDevice.Viewport.Height;
 
-        ladyBugTexture = Content.Load<Texture2D>("Textures/LadyBug");
-        bulletTexture  = Content.Load<Texture2D>("Textures/bullet");
-        enemyTexture   = Content.Load<Texture2D>("Textures/Enemy1");
-        heartTexture   = Content.Load<Texture2D>("Textures/kalpPNG");
-        font           = Content.Load<SpriteFont>("Fonts/DefaultFont");
+        ladyBugTexture      = Content.Load<Texture2D>("Textures/LadyBug");
+        bulletTexture       = Content.Load<Texture2D>("Textures/bullet");
+        enemyTexture        = Content.Load<Texture2D>("Textures/Enemy1");
+        heartTexture        = Content.Load<Texture2D>("Textures/kalpPNG");
+        font                = Content.Load<SpriteFont>("Fonts/DefaultFont");
+        backgroundTexture   = Content.Load<Texture2D>("Textures/background");
+        turretTexture       = Content.Load<Texture2D>("Textures/turret");
+        shootingEnemyTexture = Content.Load<Texture2D>("Textures/shootingEnemy");
+        bossBulletTexture   = Content.Load<Texture2D>("Textures/bossbullet");
+        enemyBulletTexture  = Content.Load<Texture2D>("Textures/enemybullet");
+        turretBulletTexture = Content.Load<Texture2D>("Textures/turretbullet");
+        playerBulletTexture = Content.Load<Texture2D>("Textures/playerbullet");
 
         pixelTexture = new Texture2D(GraphicsDevice, 1, 1);
         pixelTexture.SetData(new Color[] { Color.White });
@@ -92,16 +106,19 @@ public class Game1 : Game
 
         _ = ScoreManager.LoadAsync();
 
+        SoundManager.Load(Content);
+        SoundManager.PlayMenuMusic();
+
         mainMenu       = new MainMenu(font, pixelTexture, screenWidth, screenHeight);
         gameOverScreen = new GameOverScreen(font, pixelTexture, screenWidth, screenHeight);
         pauseMenu      = new PauseMenu(font, pixelTexture, screenWidth, screenHeight);
-        waveManager = new WaveManager(enemyTexture, bulletTexture, pixelTexture, screenWidth, screenHeight);
+        waveManager = new WaveManager(enemyTexture, shootingEnemyTexture, enemyBulletTexture, bossBulletTexture, pixelTexture, screenWidth, screenHeight);
         upgradeMenu = new UpgradeMenu(font, pixelTexture, screenWidth, screenHeight);
     }
 
     private void CreatePlayer()
     {
-        player = new Player(ladyBugTexture, bulletTexture, new Vector2(screenWidth / 2f, screenHeight - 360f));
+        player = new Player(ladyBugTexture, playerBulletTexture, new Vector2(screenWidth / 2f, screenHeight - 360f));
     }
 
     private void SubscribeDeathEffects()
@@ -133,8 +150,8 @@ public class Game1 : Game
         for (int i = 0; i < 4; i++)
         {
             Turret t = new Turret(
-                ladyBugTexture,
-                bulletTexture,
+                turretTexture,
+                turretBulletTexture,
                 new Vector2(startX + i * spacing, turretY)
             );
 
@@ -473,8 +490,7 @@ public class Game1 : Game
                 }
                 else
                 {
-                    player.health = 0;
-                    player.TakeDamage();
+                    player.InstantKill();
                     b.Deactivate();
                 }
                 continue;
@@ -531,6 +547,7 @@ public class Game1 : Game
 
     private void StartNewGame()
     {
+        SoundManager.PlayGameMusic();
         gameOver       = false;
         gameWon        = false;
         waveCleared    = false;
@@ -541,7 +558,7 @@ public class Game1 : Game
         ScoreManager.Reset();
         flowerPlanet = new FlowerPlanet(pixelTexture, screenWidth, screenHeight);
         flowerPlanet.OnDamaged += () => screenShake.Trigger(0.3f, 12f);
-        waveManager  = new WaveManager(enemyTexture, bulletTexture, pixelTexture, screenWidth, screenHeight);
+        waveManager  = new WaveManager(enemyTexture, shootingEnemyTexture, enemyBulletTexture, bossBulletTexture, pixelTexture, screenWidth, screenHeight);
         CreatePlayer();
         CreateTurrets();
         waveManager.SpawnNextWave();
@@ -552,6 +569,7 @@ public class Game1 : Game
     {
         showMenu = true;
         mainMenu.Reset();
+        SoundManager.PlayMenuMusic();
     }
 
     private void DrawHUD()
@@ -651,7 +669,7 @@ public class Game1 : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+        GraphicsDevice.Clear(Color.Black);
         Vector2 shakeOffset = screenShake.GetOffset();
         Matrix shakeMatrix  = Matrix.CreateTranslation(shakeOffset.X, shakeOffset.Y, 0f);
         spriteBatch.Begin(transformMatrix: shakeMatrix);
@@ -678,6 +696,7 @@ public class Game1 : Game
         }
         else if (!gameWon)
         {
+            spriteBatch.Draw(backgroundTexture, new Rectangle(0, 0, screenWidth, screenHeight), Color.White);
             flowerPlanet.Draw(spriteBatch);
             player.Draw(spriteBatch);
             DrawHUD();

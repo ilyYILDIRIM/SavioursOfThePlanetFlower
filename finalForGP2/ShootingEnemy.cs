@@ -20,6 +20,7 @@ public class ShootingEnemy : Enemy
         this.bulletTexture = bulletTexture;
         this.screenHeight  = screenHeight;
         this.shootTimer    = shootCooldown;
+        this._scale        = 0.025f;
     }
 
     public override void Update(GameTime gameTime)
@@ -56,6 +57,7 @@ public class ShootingEnemy : Enemy
         );
 
         projectiles.Add(new EnemyProjectile(bulletTexture, spawnPosition, screenHeight));
+        SoundManager.PlayShootEnemy();
     }
 
     public List<EnemyProjectile> GetProjectiles()
@@ -65,7 +67,25 @@ public class ShootingEnemy : Enemy
 
     public override void Draw(SpriteBatch spriteBatch)
     {
-        base.Draw(spriteBatch);
+        if (!IsActive) return;
+
+        float scaledW = _texture.Width  * _scale;
+        float scaledH = _texture.Height * _scale;
+
+        Vector2 origin = new Vector2(_texture.Width / 2f, _texture.Height / 2f);
+        Vector2 center = new Vector2(_position.X + scaledW / 2f, _position.Y + scaledH / 2f);
+
+        spriteBatch.Draw(
+            _texture,
+            center,
+            null,
+            Color.White,
+            MathHelper.PiOver2,
+            origin,
+            _scale,
+            SpriteEffects.None,
+            0f
+        );
 
         foreach (EnemyProjectile projectile in projectiles)
         {

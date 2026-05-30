@@ -5,13 +5,43 @@
   <Config />
   <SourceFiles>
     <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Fonts/DefaultFont.spritefont</File>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Sounds/backgroundgame.wav</File>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Sounds/backgroundmenu.wav</File>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Sounds/bossdeath (1).wav</File>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Sounds/bossshot.wav</File>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Sounds/enemydeath.wav</File>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Sounds/enemyshoot.wav</File>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Sounds/planetgothit.wav</File>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Sounds/playershoot.wav</File>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Sounds/turretgothit.wav</File>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/background.png</File>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/bossbullet.png</File>
     <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/bullet.png</File>
-    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/Enemy1_2.png</File>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/enemybullet.png</File>
     <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/Enemy1.png</File>
     <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/kalpPNG.png</File>
     <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/LadyBug.png</File>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/playerbullet.png</File>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/shootingEnemy.png</File>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/turret.png</File>
+    <File>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/turretbullet.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -39,11 +39,11 @@ public class EnemyProjectile : IGameObject
     {
         if (!IsActive) return;
 
-        spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, 10, 10), Color.Red);
+        spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, 40, 40), Color.White);
     }
 
     public Rectangle GetBounds()
     {
-        return new Rectangle((int)position.X, (int)position.Y, 10, 10);
+        return new Rectangle((int)position.X, (int)position.Y, 40, 40);
     }
 }

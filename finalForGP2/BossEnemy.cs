@@ -12,7 +12,7 @@ public class BossEnemy : Enemy
     private int       screenWidth;
     private int       screenHeight;
 
-    private int   bossHealth    = 2000;
+    private int   bossHealth    = 1000;
     private float shootCooldown = 10f;
     private float shootTimer;
 
@@ -42,6 +42,7 @@ public class BossEnemy : Enemy
         if (bossHealth <= 0)
         {
             bossHealth = 0;
+            SoundManager.PlayBossDeath();
             Destroy();
         }
     }
@@ -72,6 +73,7 @@ public class BossEnemy : Enemy
         float randomX = (float)(rng.NextDouble() * screenWidth);
         Vector2 spawnPos = new Vector2(randomX, barBounds.Bottom);
         bullets.Add(new BossBullet(bulletTexture, spawnPos, screenHeight));
+        SoundManager.PlayShootBoss();
     }
 
     public List<BossBullet> GetBullets()
@@ -90,7 +92,7 @@ public class BossEnemy : Enemy
 
         spriteBatch.Draw(pixelTexture, barBounds, Color.DarkMagenta);
 
-        float pct      = bossHealth / 2000f;
+        float pct      = bossHealth / 1000f;
         int   hpWidth  = (int)(screenWidth * pct);
 
         spriteBatch.Draw(pixelTexture, new Rectangle(0, 120, screenWidth, 50), Color.DarkRed * 0.4f);

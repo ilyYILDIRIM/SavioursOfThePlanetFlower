@@ -37,11 +37,11 @@ public class BossBullet : IGameObject
     {
         if (!IsActive) return;
 
-        spriteBatch.Draw(texture, new Rectangle((int)position.X - 10, (int)position.Y, 20, 20), Color.Magenta);
+        spriteBatch.Draw(texture, new Rectangle((int)position.X - 15, (int)position.Y, 60, 60), Color.White);
     }
 
     public Rectangle GetBounds()
     {
-        return new Rectangle((int)position.X - 10, (int)position.Y, 20, 20);
+        return new Rectangle((int)position.X - 15, (int)position.Y, 60, 60);
     }
 }

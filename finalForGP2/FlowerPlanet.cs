@@ -41,6 +41,8 @@ public class FlowerPlanet : IGameObject
         if (OnDamaged != null)
             OnDamaged();
 
+        SoundManager.PlayPlanetHit();
+
         if (Health <= 0)
         {
             Health   = 0;

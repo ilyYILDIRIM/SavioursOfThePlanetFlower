@@ -37,7 +37,7 @@ public class Projectile : IGameObject
     {
         if (!IsActive) return;
 
-        spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, 16, 16), Color.White);
+        spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, 32, 32), Color.White);
     }
 
     public Rectangle GetBounds()

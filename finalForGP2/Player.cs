@@ -112,6 +112,7 @@ public class Player : IGameObject
         );
 
         projectiles.Add(new Projectile(projectileTexture, spawnPosition));
+        SoundManager.PlayShootPlayer();
     }
 
     public void Draw(SpriteBatch spriteBatch)
@@ -139,6 +140,12 @@ public class Player : IGameObject
     public List<Projectile> GetProjectiles()
     {
         return projectiles;
+    }
+
+    public void InstantKill()
+    {
+        health = 0;
+        IsActive = false;
     }
 
     public void TakeDamage()

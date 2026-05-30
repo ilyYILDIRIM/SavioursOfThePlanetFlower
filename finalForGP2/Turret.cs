@@ -97,6 +97,7 @@ public class Turret : IGameObject
     public void TakeDamage()
     {
         Health--;
+        SoundManager.PlayTurretHit();
 
         if (Health <= 0)
         {
