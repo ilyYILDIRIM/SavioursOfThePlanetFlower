@@ -37,3 +37,4 @@
 /Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/Enemy1.xnb
 /Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/Enemy1_2.xnb
 /Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Textures/kalpPNG.xnb
+/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/bin/Debug/net9.0/Content/Fonts/DefaultFont.xnb

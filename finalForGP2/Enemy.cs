@@ -1,66 +1,66 @@
-using System.Collections.Generic;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-public class Enemy
+namespace finalForGP2;
+
+public class Enemy : IGameObject
 {
-    protected Texture2D texture;
-    protected Vector2 position;
-    protected float scale = 0.1f;
+    protected Texture2D _texture;
+    protected Vector2   _position;
+    protected float     _scale = 0.1f;
 
     public bool IsActive { get; private set; } = true;
 
-    protected List<Projectile> enemyProjectiles;
-
+    public event Action<Vector2> OnDestroyed;
 
     public Enemy(Texture2D texture, Vector2 startPosition)
     {
-        this.texture = texture;
-        this.position = startPosition;
-
-        enemyProjectiles = new List<Projectile>();
+        _texture  = texture;
+        _position = startPosition;
     }
 
-    public void Move(Vector2 offset)
+    public void Move(Vector2 offset) => _position += offset;
+
+    public virtual void TakeBulletDamage()
     {
-        position += offset;
+        Destroy();
     }
 
-    public void Destroy()
+    public virtual void Destroy()
     {
         IsActive = false;
+        GameEvents.EnemyKilled(ScoreManager.CurrentScore + 10);
+        ScoreManager.AddScore(10);
+
+        if (OnDestroyed != null)
+        {
+            Vector2 center = new Vector2(
+                _position.X + (_texture.Width  * _scale) / 2f,
+                _position.Y + (_texture.Height * _scale) / 2f
+            );
+            OnDestroyed(center);
+        }
     }
 
-    public Rectangle GetBounds()
-    {
-        return new Rectangle(
-            (int)position.X,
-            (int)position.Y,
-            (int)(texture.Width * scale),
-            (int)(texture.Height * scale)
-        );
-    }
-
-    public List<Projectile> GetEnemyProjectiles()
-    {
-        return enemyProjectiles;
-    }
+    public virtual void Update(GameTime gameTime) { }
 
     public virtual void Draw(SpriteBatch spriteBatch)
     {
-        if (!IsActive)
-            return;
+        if (!IsActive) return;
 
         spriteBatch.Draw(
-            texture,
-            position,
-            null,
-            Color.White,
-            0f,
-            Vector2.Zero,
-            scale,
-            SpriteEffects.None,
-            0f
+            _texture,
+            _position,
+            null, Color.White, 0f, Vector2.Zero,
+            _scale, SpriteEffects.None, 0f
         );
     }
+
+    public virtual Rectangle GetBounds() => new Rectangle(
+        (int)_position.X,
+        (int)_position.Y,
+        (int)(_texture.Width  * _scale),
+        (int)(_texture.Height * _scale)
+    );
 }

@@ -1,7 +1,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-public class Projectile
+namespace finalForGP2;
+
+public class Projectile : IGameObject
 {
     private Texture2D texture;
     private Vector2 position;
@@ -15,10 +17,14 @@ public class Projectile
         this.position = startPosition;
     }
 
+    public void Deactivate()
+    {
+        IsActive = false;
+    }
+
     public void Update(GameTime gameTime)
     {
         float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
         position.Y -= speed * deltaTime;
 
         if (position.Y < -texture.Height)
@@ -29,27 +35,13 @@ public class Projectile
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        Rectangle destination = new Rectangle(
-        (int)position.X,
-        (int)position.Y,
-        16,   // genişlik
-        16    // yükseklik
-    );
-    if (IsActive)
-    {
-        spriteBatch.Draw(texture, destination, Color.White);
-    }
-    
-        
+        if (!IsActive) return;
+
+        spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, 16, 16), Color.White);
     }
 
     public Rectangle GetBounds()
     {
-        return new Rectangle(
-            (int)position.X,
-            (int)position.Y,
-            16,
-            16
-        );
+        return new Rectangle((int)position.X, (int)position.Y, 16, 16);
     }
 }
