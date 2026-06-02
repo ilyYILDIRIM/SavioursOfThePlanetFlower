@@ -1,0 +1,19 @@
+# Build outputs
+bin/
+obj/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Visual Studio / Rider
+.vs/
+.vscode/
+*.user
+*.suo
+
+# MonoGame temp files
+*.csproj.SdkResolver.*.proj.Backup.tmp
+
+# NuGet
+*.nupkg
