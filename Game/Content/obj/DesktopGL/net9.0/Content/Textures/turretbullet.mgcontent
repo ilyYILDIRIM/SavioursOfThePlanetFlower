@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Textures/turretbullet.png</SourceFile>
+  <SourceFile>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/Game/Content/Textures/turretbullet.png</SourceFile>
   <SourceTime>2026-05-30T17:38:12.4511925+03:00</SourceTime>
-  <DestFile>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/bin/DesktopGL/Content/Textures/turretbullet.xnb</DestFile>
-  <DestTime>2026-05-30T17:57:55.5009021+03:00</DestTime>
+  <DestFile>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/Game/Content/bin/DesktopGL/Content/Textures/turretbullet.xnb</DestFile>
+  <DestTime>2026-06-02T17:58:47.6016957+03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2025-10-20T17:25:32+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

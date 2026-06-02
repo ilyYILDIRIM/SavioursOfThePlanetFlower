@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/Fonts/DefaultFont.spritefont</SourceFile>
+  <SourceFile>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/Game/Content/Fonts/DefaultFont.spritefont</SourceFile>
   <SourceTime>2026-05-29T00:23:04.1481891+03:00</SourceTime>
-  <DestFile>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/Content/bin/DesktopGL/Content/Fonts/DefaultFont.xnb</DestFile>
-  <DestTime>2026-05-29T00:24:03.5160147+03:00</DestTime>
+  <DestFile>/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/Game/Content/bin/DesktopGL/Content/Fonts/DefaultFont.xnb</DestFile>
+  <DestTime>2026-06-02T17:58:45.8490907+03:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2025-10-20T17:25:32+03:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

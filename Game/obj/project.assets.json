@@ -300,11 +300,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/finalForGP2.csproj",
-      "projectName": "finalForGP2",
-      "projectPath": "/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/finalForGP2.csproj",
+      "projectUniqueName": "/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/Game/Game.csproj",
+      "projectName": "Game",
+      "projectPath": "/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/Game/Game.csproj",
       "packagesPath": "/Users/ilyasyildirim/.nuget/packages/",
-      "outputPath": "/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/obj/",
+      "outputPath": "/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/Game/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/ilyasyildirim/.nuget/NuGet/NuGet.Config"

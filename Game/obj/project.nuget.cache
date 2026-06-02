@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "u+yQW8TE9EE=",
+  "dgSpecHash": "55nF1qzt7lw=",
   "success": true,
-  "projectFilePath": "/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/finalForGP2/finalForGP2.csproj",
+  "projectFilePath": "/Users/ilyasyildirim/Desktop/Game Programming 2/FinalMonoGameProject/Game/Game.csproj",
   "expectedPackageFiles": [
     "/Users/ilyasyildirim/.nuget/packages/monogame.content.builder.task/3.8.4.1/monogame.content.builder.task.3.8.4.1.nupkg.sha512",
     "/Users/ilyasyildirim/.nuget/packages/monogame.framework.desktopgl/3.8.4.1/monogame.framework.desktopgl.3.8.4.1.nupkg.sha512",

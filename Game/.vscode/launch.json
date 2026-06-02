@@ -1,11 +1,16 @@
 {
     "version": "0.2.0",
     "configurations": [
-      {
-        "name": "C#: Game Debug",
-        "type": "dotnet",
-        "request": "launch",
-        "projectPath": "${workspaceFolder}/Game.csproj"
-      }
+        {
+            "name": "Run Game",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/bin/Debug/net9.0/Game",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        }
     ]
 }
