@@ -4,6 +4,7 @@ namespace finalForGP2;
 
 public static class GameEvents
 {
+    //Organize event manager for game-wide events like enemy kills, player damage, and game over.
     public static event Action<int> OnEnemyKilled;
     public static event Action<int> OnPlayerDamaged;
     public static event Action<int> OnGameOver;

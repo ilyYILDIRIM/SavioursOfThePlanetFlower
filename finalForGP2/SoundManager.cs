@@ -26,15 +26,20 @@ public static class SoundManager
         planetHit   = content.Load<SoundEffect>("Sounds/planetgothit");
         turretHit   = content.Load<SoundEffect>("Sounds/turretgothit");
 
+        //Background music instances for looping and volume control.
         bgGame = content.Load<SoundEffect>("Sounds/backgroundgame").CreateInstance();
         bgGame.IsLooped = true;
         bgGame.Volume   = 0.4f;
 
+        //We wanted to have different music for the menu and the game, so we created two instances and control them separately.
         bgMenu = content.Load<SoundEffect>("Sounds/backgroundmenu").CreateInstance();
         bgMenu.IsLooped = true;
         bgMenu.Volume   = 0.4f;
+
+        //YET we didn't put a volume slider in the options menu... Maybe in a future update :)
     }
 
+    //Lambda methods for playing sounds. As you teach we tried to keep the code clean and organized as much as we could.
     public static void PlayShootPlayer() => shootPlayer?.Play();
     public static void PlayShootEnemy()  => shootEnemy?.Play();
     public static void PlayShootBoss()   => shootBoss?.Play();

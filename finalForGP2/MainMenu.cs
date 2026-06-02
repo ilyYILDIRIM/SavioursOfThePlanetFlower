@@ -55,6 +55,7 @@ public class MainMenu
         float titleX    = screenWidth / 2f - titleSize.X / 2f;
         float titleY    = screenHeight / 2f - 180f;
 
+        //Draw title with a shadow effect for better visibility. We didn't have time to make a good background, so we used this little trick!
         spriteBatch.DrawString(font, title, new Vector2(titleX + 2, titleY + 2), Color.DarkGreen);
         spriteBatch.DrawString(font, title, new Vector2(titleX, titleY), Color.LimeGreen);
 

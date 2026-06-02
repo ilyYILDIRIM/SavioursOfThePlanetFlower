@@ -57,11 +57,13 @@ public class Player : IGameObject
             position.X += speed * deltaTime;
         }
 
+        //Keep player within screen bounds.
         int screenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
         position.X = MathHelper.Clamp(position.X, 0, screenWidth - texture.Width * scale);
 
         shootTimer -= deltaTime;
 
+        //We wanted to give the player more than just shooting. 
         if (HasReflect)
         {
             if (IsReflecting)
@@ -142,6 +144,7 @@ public class Player : IGameObject
         return projectiles;
     }
 
+    //For boss fight.
     public void InstantKill()
     {
         health = 0;
@@ -164,6 +167,7 @@ public class Player : IGameObject
         return health;
     }
 
+    //Player should unlock reflect in the upgrade menu.
     public void UnlockReflect()
     {
         HasReflect = true;
@@ -184,6 +188,7 @@ public class Player : IGameObject
         return reflectTimer;
     }
 
+    //Upgrade methods for the upgrade menu.
     public void AddHealth(int amount)
     {
         health += amount;

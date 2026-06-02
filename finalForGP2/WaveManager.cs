@@ -71,6 +71,7 @@ public class WaveManager
         ShootingEnemies.Clear();
         Boss = null;
 
+        //Every 5 waves we spawn a boss instead of regular enemies. The boss has its own mechanics and is a more challenging enemy.
         if (CurrentWave % 5 == 0)
         {
             Vector2 bossPos = new Vector2(0, 30f);
@@ -106,6 +107,7 @@ public class WaveManager
         }
     }
 
+    //Get the wave configuration based on the current wave number. If we exceed the predefined configs, we return the last one which is a more difficult configuration.
     private WaveConfig GetConfig(int waveNumber)
     {
         int index = waveNumber - 1;

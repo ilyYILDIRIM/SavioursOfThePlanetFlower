@@ -7,6 +7,7 @@ namespace finalForGP2;
 
 public class DeathEffect
 {
+    //To make a death animation we set up a simple particle system.
     private struct Particle
     {
         public Vector2 Position;
@@ -31,6 +32,7 @@ public class DeathEffect
 
         for (int i = 0; i < count; i++)
         {
+            //Randomize angle and speed for each particle to create a nice explosion effect.
             float angle = (float)(rng.NextDouble() * Math.PI * 2);
             float speed = (float)(rng.NextDouble() * 150 + 60) * scale;
 
@@ -72,6 +74,7 @@ public class DeathEffect
     {
         foreach (Particle p in particles)
         {
+            //Fade out particles as they die.
             float alpha = p.Life / maxLife;
             Color color = p.Color * alpha;
 

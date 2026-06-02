@@ -32,6 +32,7 @@ public class BossEnemy : Enemy
         this.shootTimer    = shootCooldown;
         this._scale        = 0.1f;
 
+        //To place the bar at the top of the screen.
         barBounds = new Rectangle(0, 120, screenWidth, 50);
     }
 

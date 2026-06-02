@@ -23,6 +23,7 @@ public class Game1 : Game
     private WaveManager waveManager;
     private List<Turret> turrets = new List<Turret>();
 
+    //Textures
     private Texture2D ladyBugTexture;
     private Texture2D bulletTexture;
     private Texture2D enemyTexture;
@@ -163,6 +164,7 @@ public class Game1 : Game
 
     protected override void Update(GameTime gameTime)
     {
+        //To be able to make changes in the input handling order.
         KeyboardState currentKeyboard = Keyboard.GetState();
         MouseState currentMouse = Mouse.GetState();
 
@@ -187,9 +189,9 @@ public class Game1 : Game
             return;
         }
 
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+        if (Keyboard.GetState().IsKeyDown(Keys.Escape))
         {
-            Exit();
+        Exit();
         }
 
         if (currentKeyboard.IsKeyDown(Keys.Escape) && !previousKeyboard.IsKeyDown(Keys.Escape))
@@ -220,6 +222,7 @@ public class Game1 : Game
             return;
         }
 
+        //Game over screen opening and handling restart/main menu logic.
         if (gameOver)
         {
             gameOverScreen.Update(currentMouse, previousMouse);
@@ -241,6 +244,7 @@ public class Game1 : Game
             return;
         }
 
+        //Game won screen and handling restart/main menu logic.
         if (gameWon)
         {
             if (currentKeyboard.IsKeyDown(Keys.R) && !previousKeyboard.IsKeyDown(Keys.R))
@@ -258,6 +262,7 @@ public class Game1 : Game
         {
             upgradeMenu.Update(currentMouse, previousMouse);
 
+            //If player clicks the next wave button or presses space, start the next wave.
             if (upgradeMenu.ReadyForNextWave)
             {
                 waveCleared    = false;
@@ -265,6 +270,7 @@ public class Game1 : Game
                 flowerPlanet.ResetHealth();
                 deathEffects.Clear();
 
+                //if player died in the previous wave, create a new one. This allows players to sacrifice themselves for better upgrades.
                 if (!player.IsActive)
                 {
                     CreatePlayer();
@@ -280,6 +286,7 @@ public class Game1 : Game
             return;
         }
 
+        //if player is dead, speed up time to quickly finish the wave and get to the upgrade screen. Otherwise, run at normal speed.
         timeScale = player.IsActive ? 1f : 3f;
         GameTime scaledTime = new GameTime(
             gameTime.TotalGameTime,
@@ -304,6 +311,8 @@ public class Game1 : Game
         }
 
         UpdateEnemies(scaledTime);
+
+        // Check collisions after all entities have moved to ensure accurate collision detection.
         CheckBulletEnemyCollisions();
         CheckEnemyBulletCollisions();
         CheckBossBulletCollisions();
@@ -317,6 +326,8 @@ public class Game1 : Game
 
         screenShake.Update(gameTime);
 
+
+        //Winning condition check.
         if (waveManager.IsWaveCleared())
         {
             if (waveManager.CurrentWave >= 15)
@@ -331,6 +342,7 @@ public class Game1 : Game
             }
         }
 
+        //If enemy gets too close to the planet, trigger game over.
         CheckEnemyProximity();
 
         previousKeyboard = currentKeyboard;
@@ -367,7 +379,8 @@ public class Game1 : Game
                 }
             }
         }
-
+        
+        //If any enemy hits the wall, reverse direction and move all enemies down. Otherwise, just move them horizontally.
         if (hitWall)
         {
             enemyDirection *= -1;
@@ -388,6 +401,7 @@ public class Game1 : Game
         }
     }
 
+    //COLLISION CHECKS!
     private void CheckBulletEnemyCollisions()
     {
         List<Projectile> allBullets = new List<Projectile>();
@@ -444,6 +458,7 @@ public class Game1 : Game
 
             if (player.IsActive && epBounds.Intersects(playerBounds))
             {
+                //If player used his ability. Check it.
                 if (player.IsReflecting)
                 {
                     player.AddReflectedProjectile(new Vector2(epBounds.X, epBounds.Y));
@@ -483,6 +498,7 @@ public class Game1 : Game
 
             if (player.IsActive && bRect.Intersects(player.GetBounds()))
             {
+                //If player used his ability. Check it.
                 if (player.IsReflecting)
                 {
                     player.AddReflectedProjectile(new Vector2(bRect.X, bRect.Y));
@@ -490,6 +506,7 @@ public class Game1 : Game
                 }
                 else
                 {
+                    //Boss bullets are very strong, so they kill the player instantly on hit.
                     player.InstantKill();
                     b.Deactivate();
                 }
@@ -499,6 +516,7 @@ public class Game1 : Game
             Turret hitTurret = turrets.FirstOrDefault(t => t.IsActive && t.GetBounds().Intersects(bRect));
             if (hitTurret != null)
             {
+                //Boss bullets are very strong, so they kill the turret instantly on hit.
                 hitTurret.Disable();
                 b.Deactivate();
                 continue;
@@ -514,6 +532,7 @@ public class Game1 : Game
 
     private void CheckEnemyProximity()
     {
+        //If game is already over, no need to check.
         if (gameOver) return;
 
         float dangerY = screenHeight * 0.65f;
@@ -527,6 +546,7 @@ public class Game1 : Game
         }
     }
 
+    //Handling states and transitions between them.
     private void HandleGameOver(int score)
     {
         gameOver       = true;
@@ -574,6 +594,7 @@ public class Game1 : Game
 
     private void DrawHUD()
     {
+        //If player gets too much heath, hearts will start overlapping. We didn't had time to fix it... So hocam, if you see this please don't take too much heart in the update section :D!
         int heartSize = 32;
         int spacing   = 8;
         int startX    = screenWidth - 180;

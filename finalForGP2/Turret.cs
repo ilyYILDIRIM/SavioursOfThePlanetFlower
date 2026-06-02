@@ -73,6 +73,7 @@ public class Turret : IGameObject
         return projectiles;
     }
 
+    //Upgrade methods for the upgrade menu.
     public void Revive()
     {
         Health   = 3;

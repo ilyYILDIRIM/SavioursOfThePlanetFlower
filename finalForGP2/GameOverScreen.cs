@@ -87,6 +87,7 @@ public class GameOverScreen
         spriteBatch.DrawString(font, label, textPos, textColor);
     }
 
+    //Helper methods to get button rectangles for click detection.
     private Rectangle GetRestartButtonRect()
     {
         int w = 300;

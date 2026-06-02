@@ -5,6 +5,7 @@ namespace finalForGP2;
 
 public class ScreenShake
 {
+    //As second Animation, we wanted to add a screen shake effect for explosions and hits. This class manages the shake duration and intensity.
     private float duration  = 0f;
     private float intensity = 0f;
     private Random rng = new Random();
@@ -39,6 +40,7 @@ public class ScreenShake
         if (duration <= 0f)
             return Vector2.Zero;
 
+        //Randomize shake direction and intensity for a more dynamic effect.
         float x = (float)(rng.NextDouble() * 2 - 1) * intensity;
         float y = (float)(rng.NextDouble() * 2 - 1) * intensity;
 

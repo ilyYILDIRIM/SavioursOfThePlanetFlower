@@ -139,6 +139,7 @@ public class UpgradeMenu
 
     public void Update(MouseState currentMouse, MouseState previousMouse)
     {
+        //Check for mouse clicks and determine if an upgrade button or the next wave button was clicked.
         bool justClicked = currentMouse.LeftButton == ButtonState.Pressed &&
                            previousMouse.LeftButton == ButtonState.Released;
 
@@ -216,9 +217,11 @@ public class UpgradeMenu
     {
         int buttonW  = 420;
         int buttonH  = 60;
+        //Arrange buttons in 2 columns with a gap. The position is calculated based on the index of the entry.
         int gap      = 8;
         int startY   = 130;
 
+        //Calculate column and row based on index for a 2-column layout.
         int col = index % 2;
         int row = index / 2;
 
